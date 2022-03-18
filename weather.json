@@ -1,0 +1,264 @@
+{
+    "@context": [
+        "https://geojson.org/geojson-ld/geojson-context.jsonld",
+        {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "Feature",
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -121.8078386,
+                    47.431708100000002
+                ],
+                [
+                    -121.80174529999999,
+                    47.411128600000005
+                ],
+                [
+                    -121.77129009999999,
+                    47.415254400000002
+                ],
+                [
+                    -121.77737689999999,
+                    47.435834200000002
+                ],
+                [
+                    -121.8078386,
+                    47.431708100000002
+                ]
+            ]
+        ]
+    },
+    "properties": {
+        "updated": "2022-03-18T03:00:51+00:00",
+        "units": "us",
+        "forecastGenerator": "BaselineForecastGenerator",
+        "generatedAt": "2022-03-18T05:59:29+00:00",
+        "updateTime": "2022-03-18T03:00:51+00:00",
+        "validTimes": "2022-03-17T21:00:00+00:00/P7DT4H",
+        "elevation": {
+            "unitCode": "wmoUnit:m",
+            "value": 303.88560000000001
+        },
+        "periods": [
+            {
+                "number": 1,
+                "name": "Tonight",
+                "startTime": "2022-03-17T22:00:00-07:00",
+                "endTime": "2022-03-18T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 42,
+                "temperatureUnit": "F",
+                "temperatureTrend": "rising",
+                "windSpeed": "6 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/rain_showers,70/rain_showers,60?size=medium",
+                "shortForecast": "Rain Showers Likely",
+                "detailedForecast": "Rain showers likely. Cloudy. Low around 42, with temperatures rising to around 44 overnight. Southwest wind around 6 mph. Chance of precipitation is 70%. New rainfall amounts between a quarter and half of an inch possible."
+            },
+            {
+                "number": 2,
+                "name": "Friday",
+                "startTime": "2022-03-18T06:00:00-07:00",
+                "endTime": "2022-03-18T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 53,
+                "temperatureUnit": "F",
+                "temperatureTrend": "falling",
+                "windSpeed": "5 mph",
+                "windDirection": "SSW",
+                "icon": "https://api.weather.gov/icons/land/day/rain_showers,20/rain,30?size=medium",
+                "shortForecast": "Slight Chance Rain Showers then Chance Light Rain",
+                "detailedForecast": "A slight chance of rain showers before 5pm, then a chance of rain. Cloudy. High near 53, with temperatures falling to around 51 in the afternoon. South southwest wind around 5 mph. Chance of precipitation is 30%. New rainfall amounts less than a tenth of an inch possible."
+            },
+            {
+                "number": 3,
+                "name": "Friday Night",
+                "startTime": "2022-03-18T18:00:00-07:00",
+                "endTime": "2022-03-19T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 41,
+                "temperatureUnit": "F",
+                "temperatureTrend": "rising",
+                "windSpeed": "2 to 7 mph",
+                "windDirection": "SSE",
+                "icon": "https://api.weather.gov/icons/land/night/rain,70/rain,90?size=medium",
+                "shortForecast": "Light Rain",
+                "detailedForecast": "Rain. Cloudy. Low around 41, with temperatures rising to around 44 overnight. South southeast wind 2 to 7 mph. Chance of precipitation is 90%. New rainfall amounts between a quarter and half of an inch possible."
+            },
+            {
+                "number": 4,
+                "name": "Saturday",
+                "startTime": "2022-03-19T06:00:00-07:00",
+                "endTime": "2022-03-19T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 47,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "3 to 8 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/day/rain,90/rain_showers,70?size=medium",
+                "shortForecast": "Light Rain then Rain Showers Likely",
+                "detailedForecast": "Rain before 11am, then rain showers likely. Mostly cloudy, with a high near 47. Southwest wind 3 to 8 mph. Chance of precipitation is 90%. New rainfall amounts between a quarter and half of an inch possible."
+            },
+            {
+                "number": 5,
+                "name": "Saturday Night",
+                "startTime": "2022-03-19T18:00:00-07:00",
+                "endTime": "2022-03-20T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 36,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "8 mph",
+                "windDirection": "WSW",
+                "icon": "https://api.weather.gov/icons/land/night/rain_showers,60/snow,50?size=medium",
+                "shortForecast": "Rain Showers Likely then Chance Rain And Snow Showers",
+                "detailedForecast": "Rain showers likely before 5am, then a chance of rain and snow showers. Mostly cloudy, with a low around 36. West southwest wind around 8 mph. Chance of precipitation is 60%. New rainfall amounts less than a tenth of an inch possible."
+            },
+            {
+                "number": 6,
+                "name": "Sunday",
+                "startTime": "2022-03-20T06:00:00-07:00",
+                "endTime": "2022-03-20T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 47,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "7 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/day/snow,40/snow,50?size=medium",
+                "shortForecast": "Chance Rain And Snow Showers",
+                "detailedForecast": "A chance of rain and snow showers before 5pm, then a chance of rain. Mostly cloudy, with a high near 47. Chance of precipitation is 50%. New rainfall amounts between a tenth and quarter of an inch possible."
+            },
+            {
+                "number": 7,
+                "name": "Sunday Night",
+                "startTime": "2022-03-20T18:00:00-07:00",
+                "endTime": "2022-03-21T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 40,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "6 mph",
+                "windDirection": "S",
+                "icon": "https://api.weather.gov/icons/land/night/rain,70?size=medium",
+                "shortForecast": "Light Rain Likely",
+                "detailedForecast": "Rain likely. Mostly cloudy, with a low around 40. Chance of precipitation is 70%."
+            },
+            {
+                "number": 8,
+                "name": "Monday",
+                "startTime": "2022-03-21T06:00:00-07:00",
+                "endTime": "2022-03-21T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 51,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "6 mph",
+                "windDirection": "SE",
+                "icon": "https://api.weather.gov/icons/land/day/rain?size=medium",
+                "shortForecast": "Light Rain Likely",
+                "detailedForecast": "Rain likely. Cloudy, with a high near 51."
+            },
+            {
+                "number": 9,
+                "name": "Monday Night",
+                "startTime": "2022-03-21T18:00:00-07:00",
+                "endTime": "2022-03-22T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 44,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "5 mph",
+                "windDirection": "SE",
+                "icon": "https://api.weather.gov/icons/land/night/rain?size=medium",
+                "shortForecast": "Chance Light Rain",
+                "detailedForecast": "A chance of rain before 5am. Mostly cloudy, with a low around 44."
+            },
+            {
+                "number": 10,
+                "name": "Tuesday",
+                "startTime": "2022-03-22T06:00:00-07:00",
+                "endTime": "2022-03-22T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 62,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "3 mph",
+                "windDirection": "NE",
+                "icon": "https://api.weather.gov/icons/land/day/bkn?size=medium",
+                "shortForecast": "Mostly Cloudy",
+                "detailedForecast": "Mostly cloudy, with a high near 62."
+            },
+            {
+                "number": 11,
+                "name": "Tuesday Night",
+                "startTime": "2022-03-22T18:00:00-07:00",
+                "endTime": "2022-03-23T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 46,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "6 mph",
+                "windDirection": "E",
+                "icon": "https://api.weather.gov/icons/land/night/sct?size=medium",
+                "shortForecast": "Partly Cloudy",
+                "detailedForecast": "Partly cloudy, with a low around 46."
+            },
+            {
+                "number": 12,
+                "name": "Wednesday",
+                "startTime": "2022-03-23T06:00:00-07:00",
+                "endTime": "2022-03-23T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 65,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "6 mph",
+                "windDirection": "SSE",
+                "icon": "https://api.weather.gov/icons/land/day/rain?size=medium",
+                "shortForecast": "Slight Chance Light Rain",
+                "detailedForecast": "A slight chance of rain after 11am. Mostly sunny, with a high near 65."
+            },
+            {
+                "number": 13,
+                "name": "Wednesday Night",
+                "startTime": "2022-03-23T18:00:00-07:00",
+                "endTime": "2022-03-24T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 44,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "6 mph",
+                "windDirection": "S",
+                "icon": "https://api.weather.gov/icons/land/night/rain/bkn?size=medium",
+                "shortForecast": "Slight Chance Light Rain then Mostly Cloudy",
+                "detailedForecast": "A slight chance of rain before 11pm. Mostly cloudy, with a low around 44."
+            },
+            {
+                "number": 14,
+                "name": "Thursday",
+                "startTime": "2022-03-24T06:00:00-07:00",
+                "endTime": "2022-03-24T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 60,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "2 to 6 mph",
+                "windDirection": "N",
+                "icon": "https://api.weather.gov/icons/land/day/bkn?size=medium",
+                "shortForecast": "Partly Sunny",
+                "detailedForecast": "Partly sunny, with a high near 60."
+            }
+        ]
+    }
+}

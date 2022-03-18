@@ -1,0 +1,42 @@
+Backpack
+Osprey Exos
+UL
+2.5
+My PCT pack
+
+Backpack
+DemoPack
+UL
+4.0
+Demonstration Pack
+
+Tent
+POWERLIX SLEEPING PAD
+UL
+1.32
+Seems flimsy
+
+Tent
+Therm-A-Rest
+UL
+2.4
+Too fat for this one
+
+Mattress
+BigAgnes Copper Spur
+UL
+2.6
+Broken Zipper
+
+Sleeping Bag
+REI Magma 15
+UL
+2.2
+Another broken zipper
+
+Sleeping Bag
+Feathered Friends
+UL
+2.4
+Wish I had one of these
+

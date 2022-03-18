@@ -1,10 +1,8 @@
 # This is the PYTHON version of the hike_planner
 
 from WxAPI import get_weather
-from tkinter import *
 
 
-# Build the list
 backpacks = []
 tents = []
 mattresses = []
@@ -17,19 +15,6 @@ inventory = [
 ]
 
 print("*** WELCOME TO GUNNIE'S HIKE PLANNER ***\n")
-
-
-# def login():
-#     print("<<Log In>>>")
-#     user_name = input("enter user name:\n>>>")
-#     password = input("enter password:\n>>>")
-#     if user_name == "Gunnie" and password == "12345":
-#         main_menu()
-#     else:
-#         print("incorrect user name or password\n")
-#         login()
-
-
 
 
 def main_menu():
@@ -51,23 +36,11 @@ def main_menu():
             inventory_menu()
 
         if selection == '2':
-            print("running hike planner function\n")
             plan_hike()
 
+        # This is the microservice provided to my teammate
         if selection == '3':
-
-            # make this function as a microservice instead of an import
-            # 1. Get the zipcode as below. (I don't think it needs to be an integer, but check on this.
-            # 2. with weather.json open, write zipcode to json
-            # 3. WxAPI.py monitors weather.json every second. if weather.json != "", do it's API thing and write the
-            #    weather back into weather.json
-            # 4. Back in hike.py begin monitoring json every 2 seconds. if weather.json != str(zip_code) or
-            #    weather.json != "", print out the json text
-            # ?. (what happens if both processes are opening at the same time?)
-            # 5. Put this in a separate function to be called when selecetion == 3. (i.e. don't write it
-            #    here in the main_menu function.
-
-            zip_code = int(input("Enter a US zipcode"))
+            zip_code = int(input("Please enter a US zipcode"))
             print(
                 "\n\nThe Weather in your area is:",
                 get_weather(zip_code),
@@ -77,11 +50,8 @@ def main_menu():
 
         if selection == '4':
             print("converting your .txt file to pdf. because we can")
-            # 1. the planHike function will write to a .txt file (e.g. hike_list.txt) saved in this directory
-            # 2. this selection will call a convert_txt() function which calls the microservice
             convert_txt()
-            print("Text file converted to pdf")  # figure out how to get an actual confirmation on this without
-                                                    # having to monitor a pipe.
+            print("Text file converted to pdf")
             main_menu()
 
         if selection == '5':
@@ -125,6 +95,15 @@ def inventory_menu():
                 "4. Mattresses\n"
                 ">>>"
             ))
+            if item_type == "1":
+                item_type = "Backpack"
+            if item_type == "2":
+                item_type = "Tent"
+            if item_type == "3":
+                item_type = "Sleeping Bag"
+            if item_type == "4":
+                item_type = "Mattress"
+
             name = input(str(
                 "Enter item name\n"
                 ">>>"
@@ -136,13 +115,24 @@ def inventory_menu():
                 "3. Day\n" 
                 ">>>"
             ))
+            if style == "1":
+                style = "UL"
+            if style == "2":
+                style = "Heavy"
+            if style == "3":
+                style = "Day"
             weight = input(
                 "What is the item's weight?\n" 
                 "(Enter weight in pounds to nearest 10th. e.g. 5.7\n)"
                 ">>>"
             )
 
-            add_item(item_type, name, style, weight)
+            description = input(str(
+                "Enter an item description.\n"
+                ">>>"
+            ))
+
+            add_item(item_type, name, style, weight, description)
             inventory_menu()
 
         if selection == "6":
@@ -151,7 +141,7 @@ def inventory_menu():
 
 
 def print_inventory():
-    print("INVENTORY\n\n       BACKPACKS\n")
+    print("INVENTORY\n\n       BACKPACKS")
     for item in backpacks:
         item.print_item_info()
         print("")
@@ -227,10 +217,8 @@ def print_item_by_type():
         main_menu()
 
 
-def add_item(item_type, name, style, weight):
+def add_item(item_type, name, style, weight, description):
 
-    # need to control variable names for new item creation
-    new_item = Item(item_type, name, style, weight)
     if item_type == "Backpacks" \
             or item_type == "backpacks" \
             or item_type == "Backpack" \
@@ -239,6 +227,7 @@ def add_item(item_type, name, style, weight):
             or item_type == "B" \
             or item_type == "b":
         item_type = "Backpack"
+        new_item = Item(item_type, name, style, weight, description)
         backpacks.append(new_item)
     if item_type == "Mattress" \
             or item_type == "mattress" \
@@ -248,6 +237,7 @@ def add_item(item_type, name, style, weight):
             or item_type == "M" \
             or item_type == "m":
         item_type = "Mattress"
+        new_item = Item(item_type, name, style, weight, description)
         mattresses.append(new_item)
     if item_type == "Sleeping Bag" \
             or item_type == "sleeping bag" \
@@ -259,6 +249,7 @@ def add_item(item_type, name, style, weight):
             or item_type == "S" \
             or item_type == "s":
         item_type = "Sleeping Bag"
+        new_item = Item(item_type, name, style, weight, description)
         sleep_bags.append(new_item)
     if item_type == "Tents" \
             or item_type == "tents" \
@@ -268,9 +259,9 @@ def add_item(item_type, name, style, weight):
             or item_type == "T" \
             or item_type == "t":
         item_type = "Tent"
+        new_item = Item(item_type, name, style, weight, description)
         tents.append(new_item)
-
-    # print("Item added")
+    # print("\nItem added")
 
 
 def plan_hike():
@@ -280,58 +271,27 @@ def plan_hike():
         ">>>"
     ))
 
-    weather = input(str(
-      "What is the expected weather?\n"
-      "(Enter string):\n"
-      "'Fair'\n"
-      "'Rain'\n"
-      "'Snow'\n"
-      "'Sub-Zero'\n"
-      ">>>"
-    ))
+    packing_list = []
 
-    print(
-        "\nITEM TYPE:      Backpacks\n"
-        "NAME:           Osprey Exos\n"
-        "HIKING STYLE:   UL\n"
-        "WEIGHT:         2.5\n\n"
-        
-        "ITEM TYPE:      Tents\n"
-        "NAME:           BigAgnes Copper Spur\n"
-        "HIKING STYLE:   Ultra-light\n"
-        "WEIGHT:         2.6\n\n"
-        
-        "ITEM TYPE:      Mattress\n"
-        "NAME:           POWERLIX SLEEPING PAD\n"
-        "HIKING STYLE:   Ultra-light\n"
-        "WEIGHT:         1.32\n\n"
-        
-        "ITEM TYPE:      Sleeping Bag\n"
-        "NAME:           REI Magma 15\n"
-        "HIKING STYLE:   15 degree\n"
-        "WEIGHT:         2.2\n\n"
-    )
+    for item_list in inventory:
+        for item in item_list:
+            if item._style == hike_type:
+                packing_list.append(item)
+
+    print(packing_list)
+    with open('hike_list.txt', 'w') as out_file:
+        for item in packing_list:
+            out_file.write(str(item._item_type) + "\n")
+            out_file.write(str(item._name) + "\n")
+            out_file.write(str(item._style) + "\n")
+            out_file.write(str(item._weight) + "\n")
+            out_file.write(str(item._description) + "\n\n")
 
 def convert_txt():
 
-    # 1. write True to converter.txt (initialize as False)
-    # 2. WxAPI.py will monitor converter.txt every second. If True, it will first overwrite True with False.
-    # 3. it will then do it's file conversion
-    # 4. figure out a good way to return a success message without having to monitor another file...
+    # 4. This is the microservice provided by my teammate
     with open('converter.txt', 'w') as signal:
         signal.write("True")
-
-
-def save_inventory():
-    pass
-#  with inventory.txt open as in file:
-#   write inventory list to the file
-
-def load_inventory():
-    pass
-#  with inventory.txt open as in file:
-#   read inventory list from the file, assign that value to inventory variable
-# it should just be the a list in JSON format, I think
 
 def help_menu():
     selection = (input(str(
@@ -394,30 +354,35 @@ def help_menu():
 
 
 class Item:
-    def __init__(self, item_type, name, style, weight):
+    def __init__(self, item_type, name, style, weight, description):
         self._item_type = item_type  # Backpack, Tent, Mattress, Sleeping_Bag
         self._name = name  # any
         self._style = style  # UL, Heavy, Day
         self._weight = weight  # float
+        self._description = description   # any
 
     def print_item_info(self):
         print(f"ITEM TYPE:      {self._item_type}\n"
               f"NAME:           {self._name}\n"
               f"HIKING STYLE:   {self._style}\n"
-              f"WEIGHT:         {self._weight}"
+              f"WEIGHT:         {self._weight}\n"
+              f"DESCRIPTION:    {self._description}"
               )
 
 
-add_item("Backpacks", "Osprey Exos", "UL", 2.5)
-add_item("Backpacks", "REI", "Heavy", 6.5)
-add_item("Tents", "BigAgnes Copper Spur", "UL", 2.6)
-add_item("Tents", "REI 4 pax", "Heavy", 8.2)
-add_item("Mattress", "POWERLIX SLEEPING PAD", "UL", 1.32)
-add_item("Mattress", "Therm-A-Rest", "UL", 2.4)
-add_item("Sleeping Bag", "REI Magma 15", "UL", 2.2)
-add_item("Sleeping Bag", "Feathered Friends", "UL", 2.4)
 
-#login()
+
+add_item("1", "Osprey Exos", "UL", 2.5, "My PCT pack")
+add_item("1", "REI", "Heavy", 6.5, "Made his one op")
+add_item("2", "BigAgnes Copper Spur", "UL", 2.6, "Broken Zipper")
+add_item("2", "REI 4 pax", "Heavy", 8.2, "Car camping")
+add_item("3", "REI Magma 15", "UL", 2.2, "Another broken zipper")
+add_item("3", "Feathered Friends", "UL", 2.4, "Wish I had one of these")
+add_item("4", "POWERLIX SLEEPING PAD", "UL", 1.32, "Seems flimsy")
+add_item("4", "Therm-A-Rest", "UL", 2.4, "Too fat for this one")
+
+
+
 main_menu()
 
 # window = Tk()
